@@ -1,0 +1,7 @@
+Layer Pairs Export File for PCB: C:\Users\Public\Documents\Altium\Hub_Unit - Copy\PCB1.PcbDoc
+LayersSetName=Top_Bot_Plated_Thru_Holes|DrillFile=pcb1-roundholes-plated.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_Plated_Slot_Holes|DrillFile=pcb1-slotholes-plated.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_NonPlated_Thru_Holes|DrillFile=pcb1-roundholes-nonplated.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_Plated_Thru_Holes|DrillFile=|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_Plated_Slot_Holes|DrillFile=pcb1-slotholes--plated.tx4|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_NonPlated_Thru_Holes|DrillFile=pcb1-roundholes--nonplated.tx4|DrillLayers=gtl,gbl

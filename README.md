@@ -9,13 +9,13 @@
 </p>
 
 ![MCU](https://img.shields.io/badge/MCU-STM32F746BGT6-03234B)
-![PCB](https://img.shields.io/badge/PCB-2--layer_design_snapshot-0B7285)
+![PCB](https://img.shields.io/badge/PCB-4--layer_final_design-0B7285)
 ![Display](https://img.shields.io/badge/display-480%C3%97272_RGB-6F42C1)
 ![Status](https://img.shields.io/badge/status-functional_prototype-2EA44F)
 
 The Smart Home Hub is a manufactured and assembled Advanced PCB course project built around the STM32F746BGT6. It combines a 4.3-inch RGB display, external SDRAM and QSPI Flash, environmental sensing, an optical flame front end, an audible alarm, ESP-01/Blynk connectivity, and an MCP2221A USB service console on one custom PCB.
 
-The repository contains the native Altium design, a dated manufacturing-output snapshot, the final recovered application sources and GUI assets, test evidence, technical documentation, and the presentation.
+The repository contains the native Altium design history, a final four-layer submission package, manufacturing outputs, recovered application sources and GUI assets, test evidence, technical documentation, photographs, video, and the oral-demonstration presentation.
 
 > [!IMPORTANT]
 > This is an educational laboratory prototype. It is not a certified smoke, flame, gas, carbon-monoxide, or life-safety detector and must not replace approved safety equipment.
@@ -91,29 +91,31 @@ The final GUI draws into an inactive SDRAM buffer and swaps the LTDC address dur
 │   ├── Tools/                Asset-generation and preview scripts
 │   └── Reference/            SDRAM diagnostic and dated legacy CubeMX files
 ├── hardware/
-│   ├── altium/               Native schematic, PCB, OutJob, CAM, and smart PDF
-│   └── manufacturing/        Dated Gerber, drill, BOM, PnP, and DRC snapshot
+│   ├── altium/               Earlier two-layer native-design snapshot
+│   └── manufacturing/        Earlier two-layer manufacturing snapshot
 ├── docs/
 │   ├── report/               Rev 2.1 technical report in DOCX and PDF
 │   ├── presentation/         Editable project presentation
 │   ├── firmware-guide/       Firmware code guide in DOCX and PDF
 │   └── configuration/        Legacy V0–V12 Blynk export
-└── media/                    README photographs, diagrams, and validation images
+├── media/                    README photographs, diagrams, and validation images
+└── submission/               Final four-layer handoff, complete sanitized firmware, and media
 ```
 
-See [`firmware/README.md`](firmware/README.md) for source integration and QSPI installation, and [`hardware/README.md`](hardware/README.md) for the Altium and manufacturing packages.
+See [`firmware/README.md`](firmware/README.md) for source integration and QSPI installation, [`hardware/README.md`](hardware/README.md) for the hardware revision history, and [`submission/README.md`](submission/README.md) for the attached final handoff.
 
 ## Firmware integration
 
-The final recovered package contains the application layer, QSPI/GUI assets, the MCP2221A console, configuration files, asset tools, and diagnostics. It does **not** contain the complete generated CubeIDE `Drivers/` tree, linker/startup files, or the Bosch `bme68x` driver that existed in the working local project. Therefore, this repository is **not buildable as-is**, and the integration steps below are not a verified reproducible build.
+The curated `firmware/` tree contains the recovered final application layer, QSPI/GUI assets, MCP2221A console, asset tools, and diagnostics. The attached [`09_Firmware_sanitized.zip`](submission/Mahmoud_Mostafa_Adv_pcb/09_Firmware_sanitized.zip) adds a structurally complete STM32CubeIDE project with HAL/CMSIS drivers, startup and linker files, `main.h`, the `.ioc`, and the Bosch BME68x driver. Live credentials and the compiled `Debug/` tree were deliberately removed.
 
-1. Generate or open an STM32CubeIDE project for `STM32F746BGTx`.
-2. Integrate the files from `firmware/Core/Inc` and `firmware/Core/Src`.
-3. Add the Bosch BME68x SensorAPI files used by the existing application.
+The complete archive's `main.c` and CubeMX/FMC snapshot differ from the curated final source and the passing SDRAM settings documented in Rev 2.1. It is therefore a useful integration base, not a verified one-click reproducible build.
+
+1. Extract the sanitized complete CubeIDE archive, or generate a new `STM32F746BGTx` project.
+2. Use `firmware/Core/Inc` and `firmware/Core/Src` as the application-behavior reference.
+3. Reconcile the archive's FMC/LTDC configuration with the final verified settings documented in the report before regenerating code.
 4. Copy `firmware/Core/Inc/app_secrets.h.example` to `app_secrets.h` and enter local credentials. Never commit that file.
-5. Review the final verified FMC/LTDC settings in the report before regenerating code.
-6. Follow the QSPI workflow in `firmware/README.md`; the longer weather/asset guide is retained as a clearly marked historical reference.
-7. Flash through SWD/ST-LINK, then verify the service console, memory tests, sensors, display, and network path.
+5. Follow the QSPI workflow in `firmware/README.md`; the longer weather/asset guide is retained as a clearly marked historical reference.
+6. Flash through SWD/ST-LINK, then verify the service console, memory tests, sensors, display, and network path.
 
 The dated IOC under `firmware/Reference/legacy-cubemx/` is retained only as a pin-allocation reference. It predates the final verified SDRAM timing and must not be treated as a turnkey final configuration.
 
@@ -136,14 +138,14 @@ The MCP2221A exposes USART3 at **115200 8N1**. Available commands include:
 - **SCD41 compensation:** the configured 9.3 °C offset is installation-specific and must be recalibrated if enclosure, airflow, display heating, or sensor placement changes.
 - **Networking:** the working ESP-01 path uses plain HTTP as a laboratory compatibility workaround; it is not a production security design.
 - **Validation scope:** no claim is made for formal sensor calibration, long-duration reliability, EMC, or electrical-safety certification.
-- **Archived DRC:** the preserved 17 July 2026 report records 55 detected violations, two waived violations, and a modified-polygon warning. Repour polygons and run a fresh, clean DRC before any new fabrication order.
-- **Layer-count discrepancy:** the Rev 2.1 report and presentation describe a four-layer PCB, but the recovered native `PCB1.PcbDoc` master stack and preserved Gerbers are definitively two-copper-layer data. This README follows the source evidence; the four-layer documentation claim is stale.
-- **Design archives:** the Altium project references external integrated libraries that were not present in the recovered archive. The native documents are included, but the project is not self-contained.
-- **BOM metadata:** the archived BOM/PnP set is historically useful and reference-designator complete, but several value/description/MPN fields conflict. Verify every procurement field against the schematic, assembled board, and component datasheet.
-- **Buzzer documentation:** the Rev 2.1 narrative describes a 5 V buzzer rail and 100 kΩ gate pull-down, while the recovered schematic/BOM show 3.3 V and 10 kΩ. Verify the assembled revision before relying on either description.
-- **USB schematic divergence:** the compiled MCP2221A/USBLC6 sheet contains D− and VUSB connections that do not represent a valid USB path. The reworked prototype enumerated after a D+ repair, so the archived drawing is not a reliable as-built record. Trace the physical board and correct the Altium source before reproducing this section.
-- **Manufacturing data:** no IPC-2581 file or STEP model was present in the recovered project files. The archived Gerber/drill set is traceability evidence only, not a release-ready package for a new order.
-- **Compiled schematic:** the Altium smart PDF contains embedded JavaScript and vendor-link actions. Open it only in a trusted viewer with active content disabled, or export a flattened PDF from Altium before wider distribution.
+- **DRC status:** the later four-layer submission reports 23 violations (one solder-mask sliver and 22 silkscreen-to-mask); the earlier two-layer snapshot reports 55 plus two waived polygon warnings. Neither package is a clean fabrication release.
+- **Layer history:** the earlier expanded `hardware/` snapshot is two-layer. The attached final Altium archive supersedes it with a native four-copper-layer stack—Top, GND plane, 3V3 plane, Bottom—and matching `GP1`/`GP2` production outputs.
+- **Design archives:** the earlier Altium project references external libraries that were not recovered. Preserve both revisions and verify library resolution before editing or regenerating outputs.
+- **BOM metadata:** the earlier CSV BOM contains conflicting value/description/MPN fields; the final submission adds an XLSX BOM, but procurement fields still require verification against the final schematic and selected datasheets.
+- **Buzzer documentation:** the Rev 2.1 narrative describes a 5 V buzzer rail and 100 kΩ gate pull-down, while the earlier recovered schematic/BOM show 3.3 V and 10 kΩ. Verify the final native revision and assembled board before relying on either description.
+- **USB schematic history:** the earlier compiled MCP2221A/USBLC6 sheet contains inconsistent D−/VUSB connections and did not capture the repaired working path. Verify the later native revision and physical board before reproducing this section.
+- **Manufacturing data:** the final Altium archive includes `PCB1.cvg`, an IPC-2581 Revision B XML file despite its extension, plus a STEP model and a four-layer production archive. No claim is made that the package is order-ready while DRC violations remain.
+- **Altium PDFs:** several compiled schematic/PCB/ERC PDFs contain embedded JavaScript and vendor-link actions. Open them only in a trusted viewer with active content disabled, or export flattened copies from Altium before wider distribution.
 
 Do not test the alarm using dangerous gas exposure or uncontrolled flame. Use independently powered, certified detectors for real protection.
 
@@ -155,10 +157,13 @@ Do not test the alarm using dangerous gas exposure or uncontrolled flame. Use in
 - [Project Presentation (PPTX)](docs/presentation/Smart_Home_Hub_Presentation.pptx)
 - [Compiled Schematic PDF](hardware/altium/Hub_Unit%20-%20Copy.pdf)
 - [Canonical Blynk V0–V16 definition](firmware/BLYNK_DATASTREAMS.md)
+- [Final submission package index](submission/README.md)
+- [Final four-layer Altium archive](submission/Mahmoud_Mostafa_Adv_pcb/01_Altium_Project.zip)
+- [Oral-demonstration presentation](submission/Mahmoud_Mostafa_Adv_pcb/11_Smart_Home_Hub_Oral_Demonstration.pptx)
 
 ## Security
 
-Real Wi-Fi and Blynk credentials are intentionally excluded. Keep `app_secrets.h` local and rotate any credentials that were ever stored in an older project archive. The current laboratory firmware sends the Blynk token and telemetry over unencrypted HTTP; a failed ESP-01 echo-disable command can also expose the Wi-Fi join command in debug output. Do not use production credentials with this firmware.
+Real Wi-Fi and Blynk credentials are intentionally excluded. The attached raw firmware archive contained live credentials in `app_secrets.h` and compiled copies in its debug binaries; the repository includes a sanitized replacement without those files. Rotate the exposed credentials. The current laboratory firmware sends the Blynk token and telemetry over unencrypted HTTP; a failed ESP-01 echo-disable command can also expose the Wi-Fi join command in debug output. Do not use production credentials with this firmware.
 
 ---
 

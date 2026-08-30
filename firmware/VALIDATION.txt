@@ -1,0 +1,21 @@
+Validation completed 2026-08-16
+
+PASS  Restored main.c structural C syntax parse
+PASS  MCP2221A console compiled with GCC -Wall -Wextra -Werror
+PASS  Host simulation: input "PING" produced the expected "PONG" response
+PASS  No direct HAL_UART_Transmit/HAL_UART_Receive calls remain for huart3
+PASS  USART1 ESP-01 accesses remain separate from the USART3 console
+PASS  C lexical brace-balance check
+PASS  Invalid/leftover Markdown escape scan
+
+Important: a complete target link was not possible in this workspace because
+the submitted artifact contained main.c rather than the complete CubeIDE
+Drivers, main.h, bme68x and QSPI asset sources. Copy the supplied files into the
+working HUB_test project, refresh, clean and build there.
+
+SCD41 compensation update
+-------------------------
+PASS  C-aware delimiter/structure scan
+PASS  SCD41 9.3 degC command payload calculation (24 1D 0D 9B 12)
+PASS  Host test of offset conversion, CRC and room-temperature IIR filter
+PASS  GUI, room alarms and Blynk V4/V5 compensated-field integration checks

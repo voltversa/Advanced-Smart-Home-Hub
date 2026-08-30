@@ -1,0 +1,14 @@
+Pin,Name,Data type,Semantics,Min,Max,Default,Units,Automations
+V0,Flame detected,Integer,,0,1,0,--,None
+V1,Flame ADC,Integer,,0,4095,0,--,None
+V2,Flame voltage,Double,,0,3.3,0,V,None
+V3,co2,Integer,,0,10000,0,ppm,None
+V4,SCD41 temperature,Double,,-40,125,0,°C,None
+V5,SCD41 humidity,Double,,0,100,0,%,None
+V6,BME688 temperature,Double,,-40,85,0,°C,None
+V7,BME688 humidity,Double,,0,100,0,%,None
+V8,Air Pressure,Double,Air Pressure,300,1100,300,hPa,None
+V9,Gas resistance,Double,,0,10000,0,Ohm,None
+V10,Gas baseline ratio,Integer,,0,1000,0,%,None
+V11,GAS change alarm,Integer,,0,1,0,--,None
+V12,OUTSIDE TEMP,Double,,0,100,0,°C,None

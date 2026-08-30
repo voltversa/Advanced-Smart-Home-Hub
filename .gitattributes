@@ -1,0 +1,24 @@
+# Keep manufacturing and office-document artifacts as binary files.
+*.PcbDoc binary
+*.SchDoc binary
+*.Cam binary
+*.docx binary
+*.pptx binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.mp4 binary
+*.xlsx binary
+*.zip binary
+*.step binary
+*.cvg binary
+*.drc binary
+submission/**/*.html binary
+
+# Generated data should not dominate GitHub language statistics.
+firmware/Core/Src/weather_backgrounds.c linguist-generated=true
+firmware/Reference/legacy-cubemx/** binary
+hardware/altium/** binary
+hardware/manufacturing/** binary linguist-generated=true
+submission/Mahmoud_Mostafa_Adv_pcb/images&videos/** binary linguist-generated=true

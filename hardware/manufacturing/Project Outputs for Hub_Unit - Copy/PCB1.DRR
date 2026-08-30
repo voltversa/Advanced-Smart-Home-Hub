@@ -1,0 +1,41 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: PCB1.PcbDoc   17/07/2026  07:17:52 PM
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII Plated RoundHoles File : PCB1-RoundHoles-Plated.TXT
+ASCII Non-Plated RoundHoles File : PCB1-RoundHoles-NonPlated.TXT
+ASCII Plated SlotHoles File : PCB1-SlotHoles-Plated.TXT
+EIA File   : PCB1.DRL
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel             Hole Length           Drill Type  Via Type
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+T1      0.35mm (14mil)                                            Round             363       PTH        1415.40mm (55.72inch)   -                       Regular
+T2      0.4mm (16mil)                                             Round             16        PTH        15.45mm (0.61inch)      -                       Regular
+T3      0.6mm (24mil)                                             Slot              2         PTH        20.43mm (0.80inch)      2.1mm (83mil)           Regular
+T4      0.6mm (24mil)                                             Slot              2         PTH        18.94mm (0.75inch)      1.4mm (55mil)           Regular
+T5      0.92mm (36mil)                                            Round             2         PTH        2.54mm (0.10inch)       -                       Regular
+T6      1.02mm (40mil)                                            Round             18        PTH        159.00mm (6.26inch)     -                       Regular
+T7      1.3mm (51mil)                                             Round             3         PTH        15.31mm (0.60inch)      -                       Regular
+T8      1.6mm (63mil)                                             Round             4         PTH        15.24mm (0.60inch)      -                       Regular
+T9      1.02mm (40mil)                                            Round             2         NPTH       6.35mm (0.25inch)       -                       Regular
+T10     3.2mm (126mil)                                            Round             4         NPTH       389.22mm (15.32inch)    -                       Regular
+T12     4mm (157mil)                                              Round             1         NPTH       0.00mm (0.00inch)       -                       Regular
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              417
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              417
+CounterHole : Counterholes Bottom
+ASCII Non-Plated RoundHoles File : PCB1-RoundHoles--NonPlated.TX4
+ASCII Plated SlotHoles File : PCB1-SlotHoles--Plated.TX4
+EIA File   : PCB1-CounterHole.DR4
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel              Depth          Angle      Hole Length           Drill Type  Via Type
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+T11     3.454mm (136mil)                                          Round             4         NPTH       389.22mm (15.32inch)    1.727mm (67.992mil)  90°   -                       CounterHole
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              4
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CounterHole Totals                                                                  4
+
+Total Processing Time (hh:mm:ss) : 00:00:00

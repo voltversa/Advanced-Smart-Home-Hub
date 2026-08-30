@@ -1,0 +1,7 @@
+# STM32CubeIDE build products
+Debug/
+Release/
+*.launch
+
+# Private local credentials
+Core/Inc/app_secrets.h

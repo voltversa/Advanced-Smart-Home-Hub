@@ -1,0 +1,31 @@
+# Private configuration
+**/app_secrets.h
+*.env
+.env.*
+**/09_Firmware.zip
+**/Mahmoud_Mostafa_Adv_pcb.zip
+
+# STM32CubeIDE build products
+**/Debug/
+**/Release/
+*.launch
+
+# Altium generated/local files
+**/__Previews/
+**/History/
+**/Project\ Logs/
+**/Project\ Outputs/
+*.PcbDoc.htm
+*.ldb
+*.metadata
+
+# Python tools
+__pycache__/
+*.py[cod]
+.venv/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
